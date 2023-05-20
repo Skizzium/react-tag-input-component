@@ -20,6 +20,7 @@ export interface TagsInputProps {
   isEditOnRemove?: boolean;
   beforeAddValidate?: (tag: string, existingTags: string[]) => boolean;
   onKeyUp?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
+  className: string;
   classNames?: {
     input?: string;
     tag?: string;
@@ -42,6 +43,7 @@ export const TagsInput = ({
   isEditOnRemove,
   beforeAddValidate,
   onKeyUp,
+  className,
   classNames,
 }: TagsInputProps) => {
   const [tags, setTags] = useState<any>(value || []);
@@ -90,7 +92,7 @@ export const TagsInput = ({
   };
 
   return (
-    <div aria-labelledby={name} className="rti--container">
+    <div aria-labelledby={name} className={"rti--container" + (className ? " " + className : "")}>
       {tags.map(tag => (
         <Tag
           key={tag}
